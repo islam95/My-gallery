@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script type="text/javascript">
+
+		var obj1 = { user:"Islam", age:25, country:"UK"};
+		var obj2 = { user:"Dudaev", age:25, country:"Chjhghja"};
+		var obj3 = { user:"Akjhjkch", age:25, country:"Russia"};
+		var obj4 = { u1:obj1, u2:obj2, u3:obj3};
+
+		document.write(obj1.user+" is "+obj1.age+" years old and lives in " +obj1.country);
+		obj1.country = "Italy";
+		document.write("<hr />");
+		document.write(obj1.user+" is "+obj1.age+" years old and lives in " +obj1.country);
+		document.write("<hr />");
+		document.write(obj4.u2.country);
+		document.write(obj4["u2"]["user"]);
+
+		var meats = ["beef", "lamb", "chicken"];
+		var fruit = ["apple", "banana", "plumb", "orange", "watermelon"];
+		var obj5 = {arr1:meats, arr2:fruit};
+
+		document.write(obj5.arr1[1]+" with "+obj5.arr2[3]);
+		document.write("<hr />");
+	</script>
+
+
+    <meta charset="UTF-8">
+    <title>Learning JSON</title>
+	<meta name="Author" content="Islam Dudaev"/>
+</head>
+<body>
+
+</body>
+</html>

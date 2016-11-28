@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style type="text/css">
+		div#databox{
+			padding: 12px;
+			background: #F3F3F3;
+			border: #CCCCCC 1px solid;
+			width: 550px;
+			height: 400px;
+		}
+	</style>
+	
+	<script type="text/javascript">
+		function ajax_json_data(){
+			var databox = document.getElementById("databox");
+		    var hr = new XMLHttpRequest();
+		    hr.open("POST", "json_mysql_data.php", true);
+		    hr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+		    hr.onreadystatechange = function() {
+			    if(hr.readyState == 4 && hr.status == 200) {
+				    var d = JSON.parse(hr.responseText);
+				    pictureframe.innerHTML = "<img src='"+d.img1.src+"'>";
+				    thumbnailbox.innerHTML = "";
+				    for(var o in d){
+					    if(d[o].src){
+						    thumbnailbox.innerHTML += '<div onclick="putinframe(\''+d[o].src+'\')"><img src="'+d[o].src+'"></div>';
+					    }
+				    } 
+			    }
+		    }
+		    hr.send("folder=" + folder);
+		    thumbnailbox.innerHTML = '<img src="loading.gif">';
+		    //thumbnailbox.innerHTML = "requesting...";
+		}
+		
+		function putinframe(src){
+			var pictureframe = document.getElementById("pictureframe");
+			pictureframe.innerHTML = '<img src="'+src+'">';
+		}
+	</script>
+	
+	
+    <meta charset="UTF-8">
+    <title>Learning JSON</title>
+	<meta name="Author" content="Islam Dudaev"/>
+</head>
+<body>
+	
+	<h2>Timed JSON Data Request Random Items Script</h2>
+<div id="databox"></div>
+
+
+<script type="text/javascript">ajax_json_data();</script>
+
+</body>
+</html>

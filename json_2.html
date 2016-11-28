@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script type="text/javascript">
+		function ajax_get_json(){
+			var results = document.getElementById("results");
+		    var hr = new XMLHttpRequest();
+		    hr.open("GET", "mylist.json", true);
+		    hr.setRequestHeader("Content-type", "application/json");
+		    hr.onreadystatechange = function() {
+			    if(hr.readyState == 4 && hr.status == 200) {
+				    var data = JSON.parse(hr.responseText);
+				    results.innerHTML = "";
+				    for(var obj in data){
+					    results.innerHTML += data[obj].user + " is " + 
+					    data[obj].age + " lives in " + data[obj].country + "<br /><hr />";
+				    } 
+			    }
+		    }
+		    hr.send(null);
+		    results.innerHTML = "requesting...";
+		}
+	</script>
+	
+	
+    <meta charset="UTF-8">
+    <title>Learning JSON</title>
+	<meta name="Author" content="Islam Dudaev"/>
+</head>
+<body>
+	
+<div id="results"></div>
+
+<script type="text/javascript">
+	ajax_get_json();
+</script>
+
+</body>
+</html>
